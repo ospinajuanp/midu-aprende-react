@@ -23,7 +23,7 @@
 }
 
 .tw__followCard-info-name{
-    width: 150px;
+    min-width: 150px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -50,12 +50,23 @@
     background: #222;
     border: 1px solid #ddd;
     color: #ddd;
+    width: 140px;
 }
 .tw__followCard-button:hover{
     background-color: #aaa;
     
 }
 .tw__followCard-button.is__following:hover{ 
-    background: #aaa;
-    color: #222;
+    background: rgba(252, 79, 79, 0.2);
+    border-color: #fc4f4f;
+    color: #fc4f4f;
+}
+.tw__followCard-button.is__following:hover .tw__followCard-stopFollow{ 
+    display: block;
+}
+.tw__followCard-button.is__following:hover .tw__followCard-text{ 
+    display: none;
+}
+.tw__followCard-stopFollow{
+    display: none;
 }
