@@ -23,7 +23,7 @@ export function App (){
                 users.map(user =>{
                     const {userName, name, isFollowing} = user
                     return(
-                        <TwitterFollowCard formatUserName={formatUserName} userName={userName} name={name} initialIsFollowing={isFollowing} key={Math.random}/>
+                        <TwitterFollowCard formatUserName={formatUserName} userName={userName} name={name} initialIsFollowing={isFollowing} key={userName}/>
                     )
                 })
             }
