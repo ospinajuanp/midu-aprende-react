@@ -1,20 +1,37 @@
+import { useState } from 'react'
 
-export function TwitterFollowCard ({ userName, name, isFollowing}){
+export function TwitterFollowCard ({ formatUserName, userName, name, initialIsFollowing}){
+    // const state = useState(false)
+    // const isFollowing = state[0]
+    // const setIsFollowing = state[1]
+    const [isFollowing, setIsFollowing] = useState(initialIsFollowing)
+
+    const text  = isFollowing ? 'Siguiendo' : 'Seguir'
+    const buttonClassName = isFollowing
+        ? 'tw__followCard-button is__following'
+        : 'tw__followCard-button'
+
+    const handleClick = () => {
+        setIsFollowing(!isFollowing)
+    }
+
     return(
         
-        <article className='tw-followCard'>
-                <header className='tw-followCard-header'>
+        <article className='tw__followCard'>
+                <header className='tw__followCard-header'>
                     <img 
-                    className='tw-followCard-avatar' 
+                    className='tw__followCard-avatar' 
                     src={`https://unavatar.io/${userName}`}
                     alt="" />
-                    <div className='tw-followCard-info'>
-                        <strong>{name}</strong>
-                        <span>{userName}</span>
+                    <div className='tw__followCard-info'>
+                        <span className='tw__followCard-info-name'>
+                            <strong>{name}</strong>
+                        </span>
+                        <span>{formatUserName(userName)}</span>
                     </div>
                 </header>
-                <aside className='tw-followCard-aside'>
-                    <button type="button">Seguir{isFollowing || ""}</button>
+                <aside>
+                    <button className={buttonClassName} onClick={handleClick}>{text}</button>
                 </aside>
             </article>
         )

@@ -8,7 +8,11 @@ body{
 }
 
 .App{
+    width: 310px;
+    border: 1px solid #aaa;
+    padding: 8px;
+    border-radius: 10px;
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
 }
