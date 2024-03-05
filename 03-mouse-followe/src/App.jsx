@@ -5,6 +5,7 @@ function App() {
   const [enable, setEnable] = useState(false)
   const [position, setPosition] = useState({ x:0, y:0 })
 
+  // pointer move
   useEffect(()=>{
     const hadleMove = ( event )=>{
       const {clientX, clientY} = event
@@ -17,6 +18,14 @@ function App() {
     return ()=>{
       window.removeEventListener('pointermove',hadleMove )
       setPosition({x:0, y:0})
+    }
+  },[enable])
+
+  // change body className
+  useEffect(()=>{
+    document.body.classList.toggle('no-cursor', enable)
+    return()=>{
+      document.body.classList.toggle('no-cursor', !enable)
     }
   },[enable])
 
@@ -33,7 +42,7 @@ function App() {
         top: -20,
         width: 40,
         height: 40,
-        transition: 'transform 0.9s linear',
+        // transition: 'transform 0.3s linear',
         transform:`translate(${position.x}px,${position.y}px)`
       }}></div>
       <button onClick={() => setEnable(!enable)}>{enable ? 'Disable' : 'Enable'} follow punter</button>
