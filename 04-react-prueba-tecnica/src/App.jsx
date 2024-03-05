@@ -14,14 +14,16 @@ export function App () {
       .then((data) => {
         const { fact } = data
         setFact(fact)
-
-        // const firstWord = fact.split(' ')[0].slice(0, 3).join(' ')
-        const firstWord = fact.split(' ', 3).join(' ')
-        console.log(firstWord)
-
-        setImageURL(`https://cataas.com/cat/says/${firstWord}?size=50&color=red`)
       })
   }, [])
+
+  useEffect(() => {
+    if (!fact) return
+    // const firstWord = fact.split(' ')[0].slice(0, 3).join(' ')
+    const firstWord = fact.split(' ', 3).join(' ')
+
+    setImageURL(`https://cataas.com/cat/says/${firstWord}?size=50&color=red`)
+  }, [fact])
 
   return (
     <main>
